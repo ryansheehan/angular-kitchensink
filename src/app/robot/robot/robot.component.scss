@@ -5,6 +5,8 @@
   @include mat-elevation(2);
   display: inline-block;
   min-width: 200px;
+  width: 200px;
+  max-width: 200px;
 }
 
 .robot-image-container {

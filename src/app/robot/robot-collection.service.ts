@@ -13,7 +13,15 @@ const idGen = (function*() {
 })
 export class RobotCollectionService {
 
-  readonly robots = new BehaviorSubject<IRobot[]>([]);
+  readonly robots = new BehaviorSubject<IRobot[]>([
+    { name: 'Ryan', id: idGen.next().value },
+    { name: 'Derek', id: idGen.next().value },
+    { name: 'Sami', id: idGen.next().value },
+    { name: 'Chris', id: idGen.next().value },
+    { name: 'Mark', id: idGen.next().value },
+    { name: 'Rick', id: idGen.next().value },
+    { name: 'Ethan', id: idGen.next().value },
+  ]);
 
   constructor() { }
 
