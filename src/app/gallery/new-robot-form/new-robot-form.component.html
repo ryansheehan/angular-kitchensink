@@ -1,0 +1,8 @@
+<form [formGroup]="newRobotForm" (submit)="addRobot()">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+    <button mat-icon-button color="primary" type="submit" [disabled]="newRobotForm.pristine || newRobotForm.invalid">
+      <mat-icon>add_circle_outline</mat-icon>
+    </button>
+  </form>

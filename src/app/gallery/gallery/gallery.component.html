@@ -1,0 +1,4 @@
+<tyl-new-robot-form></tyl-new-robot-form>
+<div class="gallery">
+  <tyl-robot *ngFor="let robot of robots; trackBy: trackByRobot" [robot]="robot" (delete)="removeRobot($event)"></tyl-robot>
+</div>

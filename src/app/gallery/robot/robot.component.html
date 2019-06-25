@@ -1,0 +1,9 @@
+<div class="robot">
+  <div class="robot-image-container">
+    <img class="robot-image" [style.visibility]="loading ? 'hidden' : 'visible'" [src]="imgSrc" #robotImage>
+    <button class="robot-delete" mat-icon-button color="accent" (click)="onDelete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div class="robot-name mat-title">{{robot.name}}</div>
+</div>

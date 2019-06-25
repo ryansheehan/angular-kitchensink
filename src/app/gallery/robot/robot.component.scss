@@ -1,0 +1,30 @@
+@import '~@angular/material/theming';
+// @include mat-core();
+
+.robot {
+  @include mat-elevation(2);
+  display: inline-block;
+  min-width: 200px;
+}
+
+.robot-image-container {
+  position: relative;
+}
+
+.robot-name {
+  text-align: center;
+  margin: 4px 0;
+}
+
+.robot-delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.robot-image {
+  display: block;
+  width: 200px;
+  height: 200px;
+}
+
