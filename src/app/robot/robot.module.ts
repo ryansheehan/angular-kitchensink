@@ -7,23 +7,26 @@ import {
   MatFormFieldModule,
   MatButtonModule,
   MatIconModule,
+  MatProgressBarModule,
 } from '@angular/material';
 
-import { GalleryRoutingModule } from './gallery-routing.module';
+import { MainViewComponent } from './main-view/main-view.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { RobotComponent } from './robot/robot.component';
 import { NewRobotFormComponent } from './new-robot-form/new-robot-form.component';
+import { RobotRoutingModule } from './robot-routing.module';
 
 @NgModule({
-  declarations: [GalleryComponent, RobotComponent, NewRobotFormComponent],
+  declarations: [MainViewComponent, GalleryComponent, RobotComponent, NewRobotFormComponent],
   imports: [
     CommonModule,
+    RobotRoutingModule,
     ReactiveFormsModule,
-    GalleryRoutingModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
+    MatProgressBarModule,
   ]
 })
-export class GalleryModule { }
+export class RobotModule { }

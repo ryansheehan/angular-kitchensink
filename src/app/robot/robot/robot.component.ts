@@ -9,7 +9,7 @@ import {
   ElementRef,
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { IRobot } from '../models/robot.model';
+import { IRobot } from '../../robot/models/robot.model';
 
 @Component({
   selector: 'tyl-robot',

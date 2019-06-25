@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RobotCollectionService } from '../robot-collection.service';
-import { IRobot } from '../models/robot.model';
+import { IRobot } from '../../robot/models/robot.model';
 
 @Component({
   selector: 'tyl-new-robot-form',

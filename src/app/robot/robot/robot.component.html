@@ -1,6 +1,7 @@
 <div class="robot">
   <div class="robot-image-container">
     <img class="robot-image" [style.visibility]="loading ? 'hidden' : 'visible'" [src]="imgSrc" #robotImage>
+    <mat-progress-bar class="loading-bar" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
     <button class="robot-delete" mat-icon-button color="accent" (click)="onDelete()">
       <mat-icon>delete</mat-icon>
     </button>

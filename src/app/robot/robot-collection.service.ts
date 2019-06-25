@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IRobot, RobotTemplate } from './models/robot.model';
+import { IRobot, RobotTemplate } from '../robot/models/robot.model';
 
 const idGen = (function*() {
   for (let id = 0;; ++id) {

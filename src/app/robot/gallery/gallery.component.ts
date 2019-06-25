@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RobotCollectionService } from '../robot-collection.service';
 import { IRobot } from '../models/robot.model';
+import { RobotCollectionService } from '../robot-collection.service';
 
 @Component({
   selector: 'tyl-gallery',
