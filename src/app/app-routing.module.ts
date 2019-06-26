@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', loadChildren: () => import('./robot/robot.module').then(m => m.RobotModule) }
+  { path: '', pathMatch: 'full', loadChildren: () => import('./character/character.module').then(m => m.CharacterModule) }
 ];
 
 @NgModule({
