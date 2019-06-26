@@ -6,12 +6,22 @@ const idGen = (function*() {
   for (let i = 0;; i++) { yield i; }
 })();
 
+const testCharacters: ICharacter[] = [
+  { id: idGen.next().value, name: 'Ryan' },
+  { id: idGen.next().value, name: 'Derek' },
+  { id: idGen.next().value, name: 'Sami' },
+  { id: idGen.next().value, name: 'Chris' },
+  { id: idGen.next().value, name: 'Mark' },
+  { id: idGen.next().value, name: 'Rick' },
+  { id: idGen.next().value, name: 'Ethan' },
+];
+
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterCollectionService {
 
-  readonly cast = new BehaviorSubject<ICharacter[]>([]);
+  readonly cast = new BehaviorSubject<ICharacter[]>(testCharacters);
 
   constructor() { }
 

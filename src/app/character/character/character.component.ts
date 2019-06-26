@@ -17,7 +17,7 @@ import { ICharacter } from '../models/character.model';
   styleUrls: ['./character.component.scss']
 })
 export class CharacterComponent implements OnInit, AfterViewInit {
-  @ViewChild('charcaterImage', {static: false}) characterImageRef: ElementRef;
+  @ViewChild('characterImage', {static: false}) characterImageRef: ElementRef;
 
   @Input() character: ICharacter;
   @Output() delete = new EventEmitter<ICharacter>();
