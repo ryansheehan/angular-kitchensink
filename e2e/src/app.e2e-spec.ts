@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to robot-gallery!');
+    expect(page.getTitleText()).toEqual('Welcome to character-gallery!');
   });
 
   afterEach(async () => {
