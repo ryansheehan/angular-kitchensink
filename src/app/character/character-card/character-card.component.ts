@@ -20,7 +20,6 @@ export class CharacterCardComponent implements OnInit, AfterViewInit {
   @ViewChild('characterImage', {static: false}) characterImageRef: ElementRef<HTMLImageElement>;
 
   @Input() character: Character;
-  @Output() delete = new EventEmitter<Character>();
   @Output() selected = new EventEmitter<Character>();
 
   imgSrc: string;
@@ -35,9 +34,5 @@ export class CharacterCardComponent implements OnInit, AfterViewInit {
     fromEvent(this.characterImageRef.nativeElement, 'load').subscribe(() => {
       this.loading = false;
     });
-  }
-
-  onDelete() {
-    this.delete.emit(this.character);
   }
 }
