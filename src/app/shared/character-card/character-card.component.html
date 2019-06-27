@@ -1,6 +1,6 @@
-<div [class]="imageHoverZoom ? 'character-card' : ''">
+<div class="character-card">
   <div class="character-image-container">
-    <img class="character-image"
+    <img class="character-image" [ngClass]="{'hover-zoom': imageHoverZoom}"
       [style.visibility]="loading ? 'hidden' : 'visible'"
       [src]="character.imgUri"
       #characterImage>

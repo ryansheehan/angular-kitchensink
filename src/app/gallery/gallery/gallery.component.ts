@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Character } from '../../models/character.model';
-import { CharacterCollectionService } from '../../services/character-collection.service';
 
 @Component({
   selector: 'gallery',
@@ -10,13 +9,21 @@ import { CharacterCollectionService } from '../../services/character-collection.
 export class GalleryComponent implements OnInit {
 
   @Input() characters: Character[] = [];
+  @Output() characterClicked = new EventEmitter<Character>();
+
+  isClickable = true;
 
   constructor() { }
 
   ngOnInit() {
+    this.isClickable= !!this.characterClicked.observers.length;
   }
 
   trackByCharacter(index: number, item: Character) {
     return item.id;
+  }
+
+  onClick(character: Character) {
+    this.characterClicked.emit(character);
   }
 }

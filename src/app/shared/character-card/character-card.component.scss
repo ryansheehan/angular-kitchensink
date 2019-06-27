@@ -9,20 +9,16 @@
   border-radius: 6px 6px 0 0;
 }
 
-.character-image-container:hover {
-  cursor: pointer;
-}
-
 .character-image-container {
   position: relative;
   overflow: hidden;
 }
 
-.character-card .character-image-container .character-image {
+.hover-zoom {
   transition: transform .7s ease;
 }
 
-.character-card:hover .character-image-container .character-image {
+.hover-zoom:hover {
   transform: scale(1.25); // scale(2) translate(8px, 0px);
 }
 
