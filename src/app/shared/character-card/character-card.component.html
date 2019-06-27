@@ -1,4 +1,4 @@
-<div class="character-card" mat-ripple>
+<div [class]="imageHoverZoom ? 'character-card' : ''">
   <div class="character-image-container">
     <img class="character-image"
       [style.visibility]="loading ? 'hidden' : 'visible'"

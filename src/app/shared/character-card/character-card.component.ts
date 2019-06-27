@@ -3,8 +3,6 @@ import {
   OnInit,
   AfterViewInit,
   Input,
-  Output,
-  EventEmitter,
   ViewChild,
   ElementRef,
 } from '@angular/core';
@@ -20,7 +18,7 @@ export class CharacterCardComponent implements OnInit, AfterViewInit {
   @ViewChild('characterImage', {static: false}) characterImageRef: ElementRef<HTMLImageElement>;
 
   @Input() character: Character;
-  @Output() selected = new EventEmitter<Character>();
+  @Input() imageHoverZoom = true;
 
   loading = true;
 
