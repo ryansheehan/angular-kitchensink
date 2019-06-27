@@ -1,0 +1,59 @@
+@import '~@angular/material/theming';
+
+.character-card {
+  @include mat-elevation(2);
+  display: inline-block;
+  min-width: 200px;
+  width: 200px;
+  max-width: 200px;
+  border-radius: 6px 6px 0 0;
+}
+
+.character-image-container:hover {
+  cursor: pointer;
+}
+
+.character-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.character-card .character-image-container .character-image {
+  transition: transform .7s ease;
+}
+
+.character-card:hover .character-image-container .character-image {
+  transform: scale(1.25); // scale(2) translate(8px, 0px);
+}
+
+.character-name {
+  flex: 1 1 auto;
+  text-align: center;
+  user-select: none;
+  margin: 4px 0;
+}
+
+.character-card-name-container {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.character-delete {
+  flex: none;
+  // position: absolute;
+  // right: 0;
+  // top: 0;
+}
+
+.character-image {
+  display: block;
+  width: 200px;
+  height: 200px;
+}
+
+.loading-bar {
+  display: absolute;
+  bottom: 0;
+  left: 0;
+}
+

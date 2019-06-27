@@ -12,12 +12,12 @@ export class AppComponent implements OnInit {
   @ViewChild('darkModeToggle', { static: true }) darkModeToggleRef: MatSlideToggle;
 
   title = 'Character Gallery';
-  currentTheme = 'light-theme';
+  currentTheme = 'dark-theme';
 
   constructor(private overlayContainer: OverlayContainer) { }
 
   ngOnInit() {
-
+    this.darkModeToggleRef.checked = this.currentTheme === 'dark-theme';
 
     this.darkModeToggleRef.change.pipe(
       map(({ checked }) => checked ? 'dark-theme' : 'light-theme'),
