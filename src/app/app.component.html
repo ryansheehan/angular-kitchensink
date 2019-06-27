@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div [class]="currentTheme">
+  <mat-form-field>
+    <mat-label>Select theme</mat-label>
+    <mat-select #themeSelector [value]="'light'">
+      <mat-option *ngFor="let theme of themes" [value]="theme">{{theme}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <router-outlet></router-outlet>
+</div>

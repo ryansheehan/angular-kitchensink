@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ICharacter } from '../models/character.model';
+import { Character } from '../models/character.model';
 import { CharacterCollectionService } from '../character-collection.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CharacterCollectionService } from '../character-collection.service';
 })
 export class GalleryComponent implements OnInit {
 
-  characters: ICharacter[] = [];
+  characters: Character[] = [];
 
   constructor(private characterCollectionService: CharacterCollectionService) { }
 
@@ -17,11 +17,11 @@ export class GalleryComponent implements OnInit {
     this.characterCollectionService.cast.subscribe(characters => this.characters = characters);
   }
 
-  trackByCharacter(index: number, item: ICharacter) {
+  trackByCharacter(index: number, item: Character) {
     return item.id;
   }
 
-  removeCharacter(character: ICharacter) {
+  removeCharacter(character: Character) {
     this.characterCollectionService.remove(character);
   }
 }

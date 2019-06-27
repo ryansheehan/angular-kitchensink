@@ -1,8 +1,8 @@
 <div class="character" mat-ripple>
   <div class="character-image-container">
-    <img class="character-image" [style.visibility]="loading ? 'hidden' : 'visible'" [src]="imgSrc" #characterImage>
+    <img class="character-image" [style.visibility]="loading ? 'hidden' : 'visible'" [src]="character.imgUri" #characterImage>
     <mat-progress-bar class="loading-bar" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-    <button class="character-delete" mat-icon-button color="accent" (click)="onDelete()">
+    <button class="character-delete" color="accent" mat-icon-button (click)="onDelete()">
       <mat-icon>delete</mat-icon>
     </button>
   </div>

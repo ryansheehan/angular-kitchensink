@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ICharacter, CharacterTemplate } from './models/character.model';
+import { Character, CharacterTemplate } from './models/character.model';
 
-const idGen = (function*() {
-  for (let i = 0;; i++) { yield i; }
-})();
-
-const testCharacters: ICharacter[] = [
-  { id: idGen.next().value, name: 'Ryan' },
-  { id: idGen.next().value, name: 'Derek' },
-  { id: idGen.next().value, name: 'Sami' },
-  { id: idGen.next().value, name: 'Chris' },
-  { id: idGen.next().value, name: 'Mark' },
-  { id: idGen.next().value, name: 'Rick' },
-  { id: idGen.next().value, name: 'Ethan' },
+const testCharacters: Character[] = [
+  new Character({name: 'Ryan'}),
+  new Character({name: 'Derek'}),
+  new Character({name: 'Sami'}),
+  new Character({name: 'Chris'}),
+  new Character({name: 'Mark'}),
+  new Character({name: 'Rick'}),
+  new Character({name: 'Ethan'}),
 ];
 
 @Injectable({
@@ -21,17 +17,17 @@ const testCharacters: ICharacter[] = [
 })
 export class CharacterCollectionService {
 
-  readonly cast = new BehaviorSubject<ICharacter[]>(testCharacters);
+  readonly cast = new BehaviorSubject<Character[]>(testCharacters);
 
   constructor() { }
 
   add(character: CharacterTemplate) {
-    const newCharacter: ICharacter = {...character, id: idGen.next().value};
+    const newCharacter = new Character(character);
     this.cast.next([newCharacter, ...this.cast.value]);
     return newCharacter;
   }
 
-  remove(character: ICharacter | number) {
+  remove(character: Character | number) {
     const id = typeof character === 'object' ? character.id : character;
     const cast = this.cast.value;
     const index = cast.findIndex(c => c.id === id);

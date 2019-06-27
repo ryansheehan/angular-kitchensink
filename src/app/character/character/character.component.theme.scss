@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+@mixin gal-character-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  $is-dark: map-get($theme, is-dark);
+
+  .character {
+    background-color: mat-color($background, card);
+    color: mat-color($foreground, text);
+  }
+
+  .character-image-container {
+    $bg: mat-color($mat-gray, 300);
+    @if $is-dark == true {
+      $bg: mat-color($mat-gray, 700)
+    }
+    background-color: $bg;
+  }
+}

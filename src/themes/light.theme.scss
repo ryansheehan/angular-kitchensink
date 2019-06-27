@@ -1,0 +1,9 @@
+$gallery-light-primary: mat-palette($mat-blue, 600, 500, 300);
+$gallery-light-accent: mat-palette($mat-red, 200);
+$gallery-light-warn: mat-palette($mat-deep-orange, 200);
+
+$gallery-light-theme: mat-light-theme(
+  $gallery-light-primary,
+  $gallery-light-accent,
+  $gallery-light-warn
+);

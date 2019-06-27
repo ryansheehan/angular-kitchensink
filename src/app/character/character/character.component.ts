@@ -9,7 +9,7 @@ import {
   ElementRef,
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { ICharacter } from '../models/character.model';
+import { Character } from '../models/character.model';
 
 @Component({
   selector: 'tyl-character',
@@ -19,9 +19,9 @@ import { ICharacter } from '../models/character.model';
 export class CharacterComponent implements OnInit, AfterViewInit {
   @ViewChild('characterImage', {static: false}) characterImageRef: ElementRef;
 
-  @Input() character: ICharacter;
-  @Output() delete = new EventEmitter<ICharacter>();
-  @Output() selected = new EventEmitter<ICharacter>();
+  @Input() character: Character;
+  @Output() delete = new EventEmitter<Character>();
+  @Output() selected = new EventEmitter<Character>();
 
   imgSrc: string;
   loading = true;
@@ -29,7 +29,6 @@ export class CharacterComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
-    // characters found at https://robohash.org/
     this.imgSrc = `https://robohash.org/${this.character.name}.png?size=200x200;bgset=bg0`;
   }
 

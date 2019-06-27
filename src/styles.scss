@@ -9,39 +9,29 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$character-gallery-primary: mat-palette($mat-indigo);
-$character-gallery-accent: mat-palette($mat-pink, A200, A100, A400);
-$character-gallery-background: mat-palette($mat-gray);
+@import './themes/default.theme';
+@import './themes/light.theme';
+@import './themes/dark.theme';
 
-// The warn palette is optional (defaults to red).
-$character-gallery-warn: mat-palette($mat-red);
+// import custom component themes here
+@import './app/app.component.theme';
+@import './app//character/character/character.component.theme';
 
-// Create the theme object (a Sass map containing all of the palettes).
-$character-gallery-theme: mat-light-theme($character-gallery-primary, $character-gallery-accent, $character-gallery-warn);
+@mixin custom-components-theme($theme) {
+  // Custom component theme mixin calls here
+  @include gal-app-component-theme($theme);
+  @include gal-character-component-theme($theme);
+}
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($character-gallery-theme);
-
-/* You can add global styles to this file, and also import other style files */
-
-@mixin my-character-theme($theme) {
-  $primary: map-get($theme, primary);
-  $contrast: map-get($primary, contrast);
-  $foreground: map-get($theme, foreground);
+@mixin defaults($theme) {
   $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
 
-  .character {
-    background-color: mat-color($background, card);
-  }
+  background-color: mat-color($background, background);
+  color: mat-color($foreground, text);
 
-  .character-name {
-    color: mat-color($foreground, text);
-  }
+  @include angular-material-theme($theme);
+  @include custom-components-theme($theme);
 }
 
 html,
@@ -51,12 +41,20 @@ body {
 body {
   margin: 0;
 
-  background-color: mat-color(map-get($character-gallery-theme, background), background);
+  // background-color: mat-color(map-get($character-gallery-theme, background), background);
 
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-@include my-character-theme($character-gallery-theme);
+// @include my-character-theme($character-gallery-theme);
+.default-theme {
+  @include defaults($gallery-theme);
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.light-theme {
+  @include defaults($gallery-light-theme);
+}
+
+.dark-theme {
+  @include defaults($gallery-dark-theme);
+}
