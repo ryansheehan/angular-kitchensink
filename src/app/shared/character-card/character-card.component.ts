@@ -9,10 +9,10 @@ import {
   ElementRef,
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { Character } from '../models/character.model';
+import { Character } from '../../models/character.model';
 
 @Component({
-  selector: 'tyl-character-card',
+  selector: 'character-card',
   templateUrl: './character-card.component.html',
   styleUrls: ['./character-card.component.scss']
 })
@@ -22,7 +22,6 @@ export class CharacterCardComponent implements OnInit, AfterViewInit {
   @Input() character: Character;
   @Output() selected = new EventEmitter<Character>();
 
-  imgSrc: string;
   loading = true;
 
   constructor() { }

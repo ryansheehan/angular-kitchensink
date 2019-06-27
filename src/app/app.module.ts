@@ -1,17 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
-import {
-  MatSelectModule,
-  MatFormFieldModule,
-  MatToolbarModule,
-  MatSlideToggleModule,
-  MatIconModule,
-} from '@angular/material';
+import { createNewHosts, createInputTransfer, removeNgStyles } from '@angularclass/hmr';
 
+import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-root/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { createNewHosts, createInputTransfer, removeNgStyles,  } from '@angularclass/hmr';
 
 @NgModule({
   declarations: [
@@ -21,11 +15,7 @@ import { createNewHosts, createInputTransfer, removeNgStyles,  } from '@angularc
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-    MatSlideToggleModule,
-    MatIconModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

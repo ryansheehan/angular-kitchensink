@@ -17,7 +17,6 @@
 
   .character-image-container {
     $bg: map-get($accent, lighter);
-    @debug $bg;
     @if $is-dark == true {
       $bg: map-get($accent, darker);
     }

@@ -1,9 +1,10 @@
 <div class="character-card" mat-ripple>
   <div class="character-image-container">
-    <img class="character-image" [style.visibility]="loading ? 'hidden' : 'visible'" [src]="character.imgUri"
+    <img class="character-image"
+      [style.visibility]="loading ? 'hidden' : 'visible'"
+      [src]="character.imgUri"
       #characterImage>
     <mat-progress-bar class="loading-bar" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
   </div>
   <div class="character-name mat-title">{{character.name}}</div>
 </div>
-

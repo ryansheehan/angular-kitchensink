@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CharactersViewComponent } from './characters-view/characters-view.component';
+import { GalleryViewComponent } from './gallery-view/gallery-view.component';
 
 const routes: Routes = [
-  { path: '', component: CharactersViewComponent }
+  { path: '', component: GalleryViewComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CharacterRoutingModule { }
+export class GalleryRoutingModule { }
