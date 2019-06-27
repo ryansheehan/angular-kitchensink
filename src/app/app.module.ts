@@ -9,7 +9,7 @@ import {
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app-root/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { createNewHosts, createInputTransfer, removeNgStyles,  } from '@angularclass/hmr';
 

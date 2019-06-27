@@ -14,8 +14,8 @@
 @import './themes/dark.theme';
 
 // import custom component themes here
-@import './app/app.component.theme';
-@import './app//character/character-card/character-card.component.theme';
+@import './app/app-root/app.component.theme';
+@import './app/character/character-card/character-card.component.theme';
 
 @mixin custom-components-theme($theme) {
   // Custom component theme mixin calls here
