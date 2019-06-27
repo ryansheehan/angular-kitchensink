@@ -8,20 +8,27 @@ import {
   MatIconModule,
   MatProgressBarModule,
   MatRippleModule,
+  MatCardModule,
 } from '@angular/material';
 
 import { CharacterRoutingModule } from './character-routing.module';
 import { GalleryComponent } from './gallery/gallery.component';
 import { CharacterFormComponent } from './character-form/character-form.component';
-import { CharacterComponent } from './character/character.component';
+import { CharacterCardComponent } from './character-card/character-card.component';
 import { CharactersViewComponent } from './characters-view/characters-view.component';
 
 @NgModule({
-  declarations: [GalleryComponent, CharacterFormComponent, CharacterComponent, CharactersViewComponent],
+  declarations: [
+    GalleryComponent,
+    CharacterFormComponent,
+    CharacterCardComponent,
+    CharactersViewComponent
+  ],
   imports: [
     CommonModule,
     CharacterRoutingModule,
     ReactiveFormsModule,
+    MatCardModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,

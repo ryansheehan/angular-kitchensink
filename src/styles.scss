@@ -15,7 +15,7 @@
 
 // import custom component themes here
 @import './app/app.component.theme';
-@import './app//character/character/character.component.theme';
+@import './app//character/character-card/character-card.component.theme';
 
 @mixin custom-components-theme($theme) {
   // Custom component theme mixin calls here
@@ -34,15 +34,12 @@
   @include custom-components-theme($theme);
 }
 
-html,
-body {
+html, body {
   height: 100%;
 }
+
 body {
   margin: 0;
-
-  // background-color: mat-color(map-get($character-gallery-theme, background), background);
-
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 

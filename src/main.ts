@@ -18,7 +18,6 @@ const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
 if (environment.hmr) {
   // tslint:disable-next-line: no-string-literal
   if (module['hot']) {
-    console.log('######### IN HOT MODE ###########');
     bootstrap().then(ngModuleRef => {
       return hmrModule(ngModuleRef, module);
     }).catch(err => console.log(err));
