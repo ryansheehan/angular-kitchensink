@@ -5,6 +5,7 @@ import {
   MatFormFieldModule,
   MatToolbarModule,
   MatSlideToggleModule,
+  MatIconModule,
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { createNewHosts, createInputTransfer, removeNgStyles,  } from '@angularc
     MatFormFieldModule,
     MatToolbarModule,
     MatSlideToggleModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
