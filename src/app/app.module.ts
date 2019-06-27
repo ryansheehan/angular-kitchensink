@@ -3,6 +3,8 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import {
   MatSelectModule,
   MatFormFieldModule,
+  MatToolbarModule,
+  MatSlideToggleModule,
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +22,8 @@ import { createNewHosts, createInputTransfer, removeNgStyles,  } from '@angularc
     BrowserAnimationsModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatToolbarModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

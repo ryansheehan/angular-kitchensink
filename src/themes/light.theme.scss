@@ -1,6 +1,6 @@
-$gallery-light-primary: mat-palette($mat-blue, 600, 500, 300);
-$gallery-light-accent: mat-palette($mat-red, 200);
-$gallery-light-warn: mat-palette($mat-deep-orange, 200);
+$gallery-light-primary: mat-palette($mat-indigo);
+$gallery-light-accent: mat-palette($mat-blue);
+$gallery-light-warn: mat-palette($mat-orange, 800);
 
 $gallery-light-theme: mat-light-theme(
   $gallery-light-primary,

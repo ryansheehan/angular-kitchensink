@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { MatSelect } from '@angular/material';
+import { MatSlideToggle } from '@angular/material';
 
 @Component({
   selector: 'tyl-root',
@@ -8,18 +8,14 @@ import { MatSelect } from '@angular/material';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('themeSelector', {static: true}) themeSelectRef: MatSelect;
+  @ViewChild('darkModeToggle', {static: true}) darkModeToggleRef: MatSlideToggle;
 
   title = 'Character Gallery';
-  themes = [
-    'light',
-    'dark'
-  ];
   currentTheme = 'light-theme';
 
   ngOnInit() {
-    this.themeSelectRef.valueChange.pipe(
-      map(theme => `${theme}-theme`)
+    this.darkModeToggleRef.change.pipe(
+      map(({checked}) => checked ? 'dark-theme' : 'light-theme')
     ).subscribe(theme => this.currentTheme = theme);
   }
 }
