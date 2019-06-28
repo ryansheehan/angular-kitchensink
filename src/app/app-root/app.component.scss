@@ -6,4 +6,10 @@
 .app-root {
   display: block;
   height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.router-outlet-container {
+  flex: 1 1 auto;
 }

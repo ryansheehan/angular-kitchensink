@@ -25,5 +25,5 @@
         </mat-radio-group>
       </div>
   </form>
-  <character-card *ngIf="preview" [character]="preview" [imageHoverZoom]="false"></character-card>
+  <character-card *ngIf="preview" [character]="preview" [disableHoverZoom]="true" [disableRipple]="true"></character-card>
 </div>

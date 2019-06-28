@@ -18,7 +18,8 @@ export class CharacterCardComponent implements OnInit, AfterViewInit {
   @ViewChild('characterImage', {static: false}) characterImageRef: ElementRef<HTMLImageElement>;
 
   @Input() character: ICharacter;
-  @Input() imageHoverZoom = true;
+  @Input() disableHoverZoom = false;
+  @Input() disableRipple = false;
 
   loading = true;
 

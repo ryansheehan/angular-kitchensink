@@ -1,6 +1,6 @@
-<div class="character-card">
+<div class="character-card" mat-ripple [matRippleDisabled]="disableRipple">
   <div class="character-image-container">
-    <img class="character-image" [ngClass]="{'hover-zoom': imageHoverZoom}"
+    <img class="character-image" [ngClass]="{'hover-zoom': !disableHoverZoom}"
       [style.visibility]="loading ? 'hidden' : 'visible'"
       [src]="character.imgUri"
       #characterImage>

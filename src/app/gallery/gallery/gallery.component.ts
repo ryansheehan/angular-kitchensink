@@ -11,12 +11,12 @@ export class GalleryComponent implements OnInit {
   @Input() characters: ICharacter[] = [];
   @Output() characterClicked = new EventEmitter<ICharacter>();
 
-  isClickable = true;
+  disableClickable = true;
 
   constructor() { }
 
   ngOnInit() {
-    this.isClickable = !!this.characterClicked.observers.length;
+    this.disableClickable = !this.characterClicked.observers.length;
   }
 
   trackByCharacter(index: number, item: ICharacter) {

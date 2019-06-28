@@ -1,8 +1,7 @@
 <div class="gallery">
   <div *ngFor="let character of characters; trackBy: trackByCharacter"
         [ngClass]="{'clickable': isClickable}"
-        mat-ripple [matRippleDisabled]="!isClickable"
         (click)="onClick(character)">
-    <character-card [character]="character" [imageHoverZoom]="isClickable"></character-card>
+    <character-card [character]="character" [disableHoverZoom]="disableClickable" [disableRipple]="disableClickable"></character-card>
   </div>
 </div>
