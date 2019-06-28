@@ -1,7 +1,10 @@
 <div class="gallery">
-  <div *ngFor="let character of characters; trackBy: trackByCharacter"
-        [ngClass]="{'clickable': !disableClickable}"
-        (click)="onClick(character)">
-    <character-card [character]="character" [disableHoverZoom]="disableClickable" [disableRipple]="disableClickable"></character-card>
+  <div *ngFor="let character of characters; trackBy: trackByCharacter" class="character-container">
+    <div [ngClass]="{'clickable': !disableClickable}" (click)="onClick(character)">
+      <character-card [character]="character" [disableHoverZoom]="disableClickable" [disableRipple]="disableClickable"></character-card>
+    </div>
+    <button mat-icon-button class="delete-button" (click)="delete(character)">
+      <mat-icon>delete</mat-icon>
+    </button>
   </div>
 </div>

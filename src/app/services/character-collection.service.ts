@@ -49,23 +49,19 @@ export class CharacterCollectionService {
     const removed$ = of(character).pipe(
       delay(100),
       map(c => typeof c === 'object' ? c.id : c),
-      mergeMap(id => this.cast.pipe(
-        map(castList => {
-          const index = castList.findIndex(member => member.id === id);
-          if (index > -1) {
-            return {
-              cast: [...castList.slice(0, index), ...castList.slice(index + 1)],
-              removed: castList[index]
-            };
-          } else {
-            throw new Error('Not found');
-          }
-        })
-      )),
+      map(id => {
+        const cast = this.cast.value;
+        const index = this.cast.value.findIndex(member => member.id === id);
+        if (index > -1) {
+          return [...cast.slice(0, index), ...cast.slice(index + 1)];
+        } else {
+          throw new Error('Not found, remove failed.');
+        }
+      }),
       share()
     );
 
-    removed$.subscribe(({cast}) => this.cast.next(cast));
+    removed$.subscribe(cast => this.cast.next(cast));
 
     return removed$;
   }

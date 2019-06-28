@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ICharacter } from '../../models/character.model';
+import { CharacterCollectionService } from 'src/app/services/character-collection.service';
 
 @Component({
   selector: 'gallery',
@@ -13,7 +14,7 @@ export class GalleryComponent implements OnInit {
 
   disableClickable = true;
 
-  constructor() { }
+  constructor(private characterCollectionService: CharacterCollectionService) { }
 
   ngOnInit() {
     this.disableClickable = !this.characterClicked.observers.length;
@@ -25,5 +26,9 @@ export class GalleryComponent implements OnInit {
 
   onClick(character: ICharacter) {
     this.characterClicked.emit(character);
+  }
+
+  delete(character: ICharacter) {
+    this.characterCollectionService.remove(character);
   }
 }
