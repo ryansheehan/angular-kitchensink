@@ -13,6 +13,7 @@ import {
   MatButtonModule,
   MatProgressBarModule,
   MatRippleModule,
+  MatRadioModule,
 } from '@angular/material';
 
 const materialModules = [
@@ -26,6 +27,7 @@ const materialModules = [
     MatButtonModule,
     MatProgressBarModule,
     MatRippleModule,
+    MatRadioModule,
 ];
 
 import { QuickCharacterComponent } from './quick-character/quick-character.component';
@@ -43,6 +45,7 @@ import { CharacterCardComponent } from './character-card/character-card.componen
   ],
   exports: [
     ...materialModules,
+    ReactiveFormsModule,
     QuickCharacterComponent,
     CharacterCardComponent
   ]

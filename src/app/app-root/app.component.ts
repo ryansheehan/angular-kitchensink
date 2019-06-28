@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { MatSlideToggle } from '@angular/material';
+import { AppBarService } from '../services/app-bar.service';
 
 @Component({
   selector: 'tyl-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit {
   title = 'Character Gallery';
   currentTheme = 'dark-theme';
 
-  constructor(private overlayContainer: OverlayContainer) { }
+  constructor(private overlayContainer: OverlayContainer, public appBarService: AppBarService) { }
 
   ngOnInit() {
     this.darkModeToggleRef.checked = this.currentTheme === 'dark-theme';

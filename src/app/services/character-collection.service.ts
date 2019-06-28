@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, from, combineLatest } from 'rxjs';
-import { Character, CharacterTemplate } from '../models/character.model';
+import { Character, CharacterTemplate, ICharacter } from '../models/character.model';
 import { delay, mergeMap, first, map, share, findIndex, filter, toArray, tap } from 'rxjs/operators';
 
 const testCharacters: Character[] = [
@@ -16,7 +16,7 @@ const testCharacters: Character[] = [
 })
 export class CharacterCollectionService {
 
-  readonly cast = new BehaviorSubject<Character[]>(testCharacters);
+  readonly cast = new BehaviorSubject<ICharacter[]>(testCharacters);
 
   constructor() { }
 
@@ -45,7 +45,7 @@ export class CharacterCollectionService {
     return newCharacter$;
   }
 
-  remove(character: Character | number) {
+  remove(character: ICharacter | number) {
     const removed$ = of(character).pipe(
       delay(100),
       map(c => typeof c === 'object' ? c.id : c),
@@ -71,6 +71,8 @@ export class CharacterCollectionService {
   }
 
   update(character: Character) {
+    // not really deprecated, only the pipe() version is deprecated
+    // tslint:disable-next-line: deprecation
     const editedList$ = combineLatest(of(character), this.cast, (item, list) => ({item, list})).pipe(
       first(),
       delay(100),

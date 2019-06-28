@@ -7,7 +7,7 @@ import {
   ElementRef,
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { Character } from '../../models/character.model';
+import { ICharacter } from '../../models/character.model';
 
 @Component({
   selector: 'character-card',
@@ -17,7 +17,7 @@ import { Character } from '../../models/character.model';
 export class CharacterCardComponent implements OnInit, AfterViewInit {
   @ViewChild('characterImage', {static: false}) characterImageRef: ElementRef<HTMLImageElement>;
 
-  @Input() character: Character;
+  @Input() character: ICharacter;
   @Input() imageHoverZoom = true;
 
   loading = true;

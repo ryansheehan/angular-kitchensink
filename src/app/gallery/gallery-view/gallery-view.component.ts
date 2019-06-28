@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Character, CharacterTemplate } from '../../models/character.model';
+import { ICharacter, CharacterTemplate } from '../../models/character.model';
 import { CharacterCollectionService } from '../../services/character-collection.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { CharacterCollectionService } from '../../services/character-collection.
 })
 export class GalleryViewComponent implements OnInit {
 
-  characters: Character[] = [];
+  characters: ICharacter[] = [];
 
   constructor(private characterCollectionService: CharacterCollectionService, private router: Router) { }
 
@@ -22,7 +22,7 @@ export class GalleryViewComponent implements OnInit {
     this.characterCollectionService.add(template);
   }
 
-  onCharacterClicked({id}: Character) {
+  onCharacterClicked({id}: ICharacter) {
     this.router.navigate(['/edit', id]);
   }
 }

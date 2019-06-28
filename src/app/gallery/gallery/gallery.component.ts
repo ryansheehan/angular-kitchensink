@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Character } from '../../models/character.model';
+import { ICharacter } from '../../models/character.model';
 
 @Component({
   selector: 'gallery',
@@ -8,8 +8,8 @@ import { Character } from '../../models/character.model';
 })
 export class GalleryComponent implements OnInit {
 
-  @Input() characters: Character[] = [];
-  @Output() characterClicked = new EventEmitter<Character>();
+  @Input() characters: ICharacter[] = [];
+  @Output() characterClicked = new EventEmitter<ICharacter>();
 
   isClickable = true;
 
@@ -19,11 +19,11 @@ export class GalleryComponent implements OnInit {
     this.isClickable = !!this.characterClicked.observers.length;
   }
 
-  trackByCharacter(index: number, item: Character) {
+  trackByCharacter(index: number, item: ICharacter) {
     return item.id;
   }
 
-  onClick(character: Character) {
+  onClick(character: ICharacter) {
     this.characterClicked.emit(character);
   }
 }

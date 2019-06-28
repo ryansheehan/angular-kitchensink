@@ -2,7 +2,15 @@ const idGen = (function*() {
   for (let i = 0;; i++) { yield i; }
 })();
 
-export type CharacterTemplate = Pick<Character, 'name'> & Partial<Pick<Character, 'background' | 'image'>>;
+export interface ICharacter {
+  id: number;
+  image: CharacterImage;
+  background: CharacterBackground;
+  imgUri: string;
+  name: string;
+}
+
+export type CharacterTemplate = Pick<ICharacter, 'name'> & Partial<Exclude<ICharacter, 'imgUri'>>;
 
 export enum CharacterBackground {
   NONE = 'bgset=bg0',
@@ -17,11 +25,11 @@ export enum CharacterImage {
   CAT = 'set=set4',
 }
 
-export class Character {
+export class Character implements ICharacter {
   readonly id: number;
 
-  image = CharacterImage.CAT;
-  background = CharacterBackground.NONE;
+  image: CharacterImage;
+  background: CharacterBackground;
 
   get imgUri() {
     // characters found at https://robohash.org/
@@ -30,7 +38,10 @@ export class Character {
   name: string;
 
   constructor(template: CharacterTemplate) {
-    this.name = template.name;
-    this.id = idGen.next().value;
+    const {id, name, image, background} = template;
+    this.name = name;
+    this.id = id || idGen.next().value;
+    this.image = image || CharacterImage.ROBOT;
+    this.background = background || CharacterBackground.NONE;
   }
 }

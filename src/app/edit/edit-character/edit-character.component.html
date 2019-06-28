@@ -1,2 +1,29 @@
-<p>edit-character works!</p>
-<p>{{character | json}}</p>
+<div>
+  <form [formGroup]="characterForm">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+    <div class="radio-field">
+      <label id="type-radio-group-label">Type</label>
+      <mat-radio-group class="radio-options"
+        aria-labelledby="type-radio-group-label"
+        formControlName="image">
+        <mat-radio-button [value]="CharacterImage.ROBOT">Robot</mat-radio-button>
+        <mat-radio-button [value]="CharacterImage.CAT">Cat</mat-radio-button>
+        <mat-radio-button [value]="CharacterImage.ROBOTHEAD">Robot Head</mat-radio-button>
+        <mat-radio-button [value]="CharacterImage.MONSTER">Monster</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="radio-field">
+        <label id="background-radio-group-label">Background</label>
+        <mat-radio-group class="radio-options"
+          aria-labelledby="background-radio-group-label"
+          formControlName="background">
+          <mat-radio-button [value]="CharacterBackground.NONE">None</mat-radio-button>
+          <mat-radio-button [value]="CharacterBackground.LOCATION">Location</mat-radio-button>
+          <mat-radio-button [value]="CharacterBackground.GENERIC">Generic</mat-radio-button>
+        </mat-radio-group>
+      </div>
+  </form>
+  <character-card *ngIf="preview" [character]="preview" [imageHoverZoom]="false"></character-card>
+</div>
