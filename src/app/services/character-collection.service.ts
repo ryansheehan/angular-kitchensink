@@ -46,24 +46,32 @@ export class CharacterCollectionService {
   }
 
   remove(character: ICharacter | number) {
-    const removed$ = of(character).pipe(
+    // not really deprecated, only the pipe() version is deprecated
+    // tslint:disable-next-line: deprecation
+    const deletedList$ = combineLatest(
+      of(character),
+      this.cast,
+      (item, list) => ({
+        id: typeof item === 'object' ? item.id : item,
+        list
+      })
+    ).pipe(
+      first(),
       delay(100),
-      map(c => typeof c === 'object' ? c.id : c),
-      map(id => {
-        const cast = this.cast.value;
-        const index = this.cast.value.findIndex(member => member.id === id);
+      map(({id, list}) => {
+        const index = list.findIndex(l => l.id === id);
         if (index > -1) {
-          return [...cast.slice(0, index), ...cast.slice(index + 1)];
+          return [...list.slice(0, index), ...list.slice(index + 1)];
         } else {
-          throw new Error('Not found, remove failed.');
+          throw new Error('Character not in cast');
         }
       }),
       share()
     );
 
-    removed$.subscribe(cast => this.cast.next(cast));
+    deletedList$.subscribe(cast => this.cast.next(cast));
 
-    return removed$;
+    return deletedList$;
   }
 
   update(character: Character) {
