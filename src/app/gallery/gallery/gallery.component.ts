@@ -16,7 +16,7 @@ export class GalleryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.isClickable= !!this.characterClicked.observers.length;
+    this.isClickable = !!this.characterClicked.observers.length;
   }
 
   trackByCharacter(index: number, item: Character) {

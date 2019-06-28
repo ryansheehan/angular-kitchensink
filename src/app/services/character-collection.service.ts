@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, from, combineLatest } from 'rxjs';
 import { Character, CharacterTemplate } from '../models/character.model';
-import { delay, mergeMap, first, map, share, findIndex, filter, toArray } from 'rxjs/operators';
+import { delay, mergeMap, first, map, share, findIndex, filter, toArray, tap } from 'rxjs/operators';
 
 const testCharacters: Character[] = [
   new Character({name: 'Ryan'}),
@@ -25,8 +25,10 @@ export class CharacterCollectionService {
   get(id: number) {
     return this.cast.pipe(
       delay(100),
-      mergeMap(cast => from(cast)),
-      first(character => character.id === id),
+      mergeMap(cast => from(cast).pipe(
+        first(character => character.id === id),
+      )),
+      first()
     );
   }
 

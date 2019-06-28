@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'gallery' },
   { path: 'gallery', loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule) },
-  { path: 'edit/:id', loadChildren: () => import('./edit/edit.module').then(m => m.EditModule) },
+  { path: 'edit', loadChildren: () => import('./edit/edit.module').then(m => m.EditModule) },
 ];
 
 @NgModule({
