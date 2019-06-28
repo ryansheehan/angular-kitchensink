@@ -5,12 +5,10 @@ import { delay, mergeMap, first, map, share, findIndex, filter, toArray, tap } f
 
 const testCharacters: Character[] = [
   new Character({name: 'Ryan'}),
-  new Character({name: 'Derek'}),
-  new Character({name: 'Sami'}),
-  new Character({name: 'Chris'}),
-  new Character({name: 'Mark'}),
-  new Character({name: 'Rick'}),
-  new Character({name: 'Ethan'}),
+  new Character({name: 'Jadrien'}),
+  new Character({name: 'TJ'}),
+  new Character({name: 'Adelynn'}),
+  new Character({name: 'Avabella'}),
 ];
 
 @Injectable({
@@ -70,5 +68,25 @@ export class CharacterCollectionService {
     removed$.subscribe(({cast}) => this.cast.next(cast));
 
     return removed$;
+  }
+
+  update(character: Character) {
+    const editedList$ = combineLatest(of(character), this.cast, (item, list) => ({item, list})).pipe(
+      first(),
+      delay(100),
+      map(({item, list}) => {
+        const index = list.findIndex(l => l.id === item.id);
+        if (index > -1) {
+          return [...list.slice(0, index), item, ...list.slice(index + 1)];
+        } else {
+          throw new Error('Character not in cast');
+        }
+      }),
+      share()
+    );
+
+    editedList$.subscribe(cast => this.cast.next(cast));
+
+    return editedList$;
   }
 }
