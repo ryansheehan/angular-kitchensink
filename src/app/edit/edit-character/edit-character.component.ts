@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, startWith, tap, distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { map, startWith, tap, distinctUntilChanged, debounceTime, skip } from 'rxjs/operators';
 
 import { CharacterCollectionService } from '../../services/character-collection.service';
 import { Character, CharacterTemplate, CharacterBackground, CharacterImage, ICharacter } from '../../models/character.model';
@@ -27,11 +27,11 @@ export class EditCharacterComponent implements OnInit {
   ngOnInit() {
     // tslint:disable-next-line: no-string-literal
     const character: Character = this.route.snapshot.data['character'];
+    this.preview = character;
+
     this.characterForm = this.buildForm(character);
 
     this.characterForm.valueChanges.pipe(
-      startWith(character),
-
       map<Required<CharacterTemplate>, Character>(({name, image, background}) => new Character({
         name,
         image,
@@ -39,11 +39,12 @@ export class EditCharacterComponent implements OnInit {
         id: character.id
       })),
 
-      tap(preview => this.preview = preview),
-
       debounceTime(200),
       distinctUntilChanged(),
-    ).subscribe(updatedCharcater => this.characterCollectionService.update(updatedCharcater));
+    ).subscribe(updatedCharacter => {
+      this.preview = updatedCharacter;
+      this.characterCollectionService.update(updatedCharacter);
+    });
   }
 
   private buildForm({name, background = CharacterBackground.NONE, image = CharacterImage.CAT}: CharacterTemplate) {
