@@ -1,0 +1,42 @@
+:host {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.edit-character {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 1024px;
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.edit-character-form {
+  flex: 1 1 50%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  grid-gap: 16px;
+  min-width: 480px
+}
+
+.preview-card {
+  flex: 1 1 50%;
+  text-align: center;
+  align-self: center;
+}
+
+.radio-field {
+  margin-top: 16px;
+}
+
+.radio-options {
+  display: flex;
+  flex-flow: column nowrap;
+
+  &> * {
+    margin-top: 8px
+  }
+}

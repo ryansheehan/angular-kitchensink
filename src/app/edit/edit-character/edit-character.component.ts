@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, startWith, tap, distinctUntilChanged, debounceTime, skip } from 'rxjs/operators';
+import { map, startWith, tap, distinctUntilChanged, debounceTime, skip, filter, skipWhile } from 'rxjs/operators';
 
 import { CharacterCollectionService } from '../../services/character-collection.service';
 import { Character, CharacterTemplate, CharacterBackground, CharacterImage, ICharacter } from '../../models/character.model';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { AppBarService } from 'src/app/services/app-bar.service';
 
 @Component({
   selector: 'edit-character',
@@ -22,7 +23,8 @@ export class EditCharacterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private characterCollectionService: CharacterCollectionService) { }
+    private characterCollectionService: CharacterCollectionService,
+    private appBarService: AppBarService) { }
 
   ngOnInit() {
     // tslint:disable-next-line: no-string-literal
@@ -31,7 +33,11 @@ export class EditCharacterComponent implements OnInit {
 
     this.characterForm = this.buildForm(character);
 
+    this.characterForm.statusChanges.subscribe(status => this.appBarService.showNavigateBack.next(status === 'VALID'));
+
     this.characterForm.valueChanges.pipe(
+      skipWhile(() => this.characterForm.status === 'INVALID'),
+
       map<Required<CharacterTemplate>, Character>(({name, image, background}) => new Character({
         name,
         image,
