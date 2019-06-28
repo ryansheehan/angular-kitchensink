@@ -1,6 +1,6 @@
 <div class="gallery">
   <div *ngFor="let character of characters; trackBy: trackByCharacter"
-        [ngClass]="{'clickable': isClickable}"
+        [ngClass]="{'clickable': !disableClickable}"
         (click)="onClick(character)">
     <character-card [character]="character" [disableHoverZoom]="disableClickable" [disableRipple]="disableClickable"></character-card>
   </div>
