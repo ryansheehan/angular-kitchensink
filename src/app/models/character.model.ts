@@ -40,7 +40,7 @@ export class Character implements ICharacter {
   constructor(template: CharacterTemplate) {
     const {id, name, image, background} = template;
     this.name = name;
-    this.id = id || idGen.next().value;
+    this.id = id === undefined ? idGen.next().value : id;
     this.image = image || CharacterImage.ROBOT;
     this.background = background || CharacterBackground.NONE;
   }
