@@ -14,6 +14,7 @@ import {
   MatProgressBarModule,
   MatRippleModule,
   MatRadioModule,
+  MatButtonToggleModule,
 } from '@angular/material';
 
 const materialModules = [
@@ -28,6 +29,7 @@ const materialModules = [
     MatProgressBarModule,
     MatRippleModule,
     MatRadioModule,
+    MatButtonToggleModule,
 ];
 
 import { QuickCharacterComponent } from './quick-character/quick-character.component';

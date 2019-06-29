@@ -1,8 +1,15 @@
 <form class="new-character-form" [formGroup]="newCharacterForm" (submit)="addCharacter()">
-  <mat-form-field class="character-name-field">
-    <input matInput placeholder="New Character" formControlName="name">
-  </mat-form-field>
-  <button mat-icon-button class="add-button" color="primary" type="submit" [disabled]="newCharacterForm.pristine || newCharacterForm.invalid">
-    <mat-icon>add_circle_outline</mat-icon>
-  </button>
+  <mat-button-toggle-group class="image-toggle-group" formControlName="image">
+    <mat-button-toggle *ngFor="let image of imageOptions" [value]="image">
+      <img [src]="'https://robohash.org/.png?size=50x50;' + image">
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+  <div class="input-add-group">
+    <mat-form-field class="character-name-field">
+      <input matInput placeholder="New Character" formControlName="name">
+    </mat-form-field>
+    <button mat-icon-button class="add-button" color="primary" type="submit" [disabled]="newCharacterForm.pristine || newCharacterForm.invalid">
+      <mat-icon>add_circle_outline</mat-icon>
+    </button>
+  </div>
 </form>

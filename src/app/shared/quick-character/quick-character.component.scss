@@ -1,7 +1,19 @@
 .new-character-form {
   display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.image-toggle-group {
+  flex: none;
+}
+
+.input-add-group {
+  display: flex;
   flex-flow: row nowrap;
+  flex: 1 1 auto;
   align-items: center;
+  margin-left: 16px;
 }
 
 .character-name-field {

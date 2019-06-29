@@ -1,24 +1,18 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, from, combineLatest } from 'rxjs';
-import { Character, CharacterTemplate, ICharacter } from '../models/character.model';
+import { Character, CharacterTemplate, ICharacter, CharacterImage } from '../models/character.model';
 import { delay, mergeMap, first, map, share, findIndex, filter, toArray, tap } from 'rxjs/operators';
-
-const testCharacters: Character[] = [
-  new Character({name: 'Ryan'}),
-  new Character({name: 'Jadrien'}),
-  new Character({name: 'TJ'}),
-  new Character({name: 'Adelynn'}),
-  new Character({name: 'Avabella'}),
-];
 
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterCollectionService {
 
-  readonly cast = new BehaviorSubject<ICharacter[]>(testCharacters);
+  defaultImage = CharacterImage.ROBOT;
+  readonly cast = new BehaviorSubject<ICharacter[]>([]);
 
-  constructor() { }
+  constructor() {
+  }
 
   get(id: number) {
     return this.cast.pipe(

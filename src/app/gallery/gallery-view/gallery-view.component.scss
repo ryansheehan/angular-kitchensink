@@ -3,10 +3,11 @@
   height: 100%;
   flex-direction: column;
   align-items: center;
+  padding: 0 8px;
 }
 
 .new-character {
-  max-width: 400px;
+  // max-width: 400px;
   width: 100%;
 }
 
@@ -14,4 +15,5 @@
   max-width: 1024px;
   width: 100%;
   flex: 1 1 auto;
+  margin-top: 8px;
 }
